@@ -48,7 +48,7 @@ const PlayerCard: React.FC = () => {
 
   return (
     <>
-      <div className="glass w-full max-w-md rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+      <div className="glass w-full max-w-[90vw] sm:max-w-md rounded-3xl overflow-hidden shadow-2xl border border-white/10">
         {/* Header section with station info */}
         <div className="bg-gradient p-6 text-white text-center relative overflow-hidden">
           <h1 className="font-heading text-2xl font-bold mb-1">RadetzkyFM</h1>

@@ -46,8 +46,8 @@ const PlayerControls: React.FC<PlayerControlsProps> = ({
           onClick={onPlayPause}
           data-state={isPlaying ? "playing" : "paused"}
         >
-          <div className="flex items-center justify-center w-full h-full">
-            <i className={`fas ${isPlaying ? 'fa-pause' : 'fa-play'} text-2xl ${isPlaying ? '' : 'ml-1'}`}></i>
+          <div className="flex items-center justify-center w-full h-full relative">
+            <i className={`fas ${isPlaying ? 'fa-pause' : 'fa-play'} text-2xl absolute transform ${isPlaying ? '' : 'translate-x-0.5'}`}></i>
           </div>
         </button>
         

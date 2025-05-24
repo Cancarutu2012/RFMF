@@ -28,7 +28,7 @@ const Home: React.FC = () => {
         </div>
 
         {/* Main content container */}
-        <main className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-10">
+        <main className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-10 overflow-hidden">
           <PlayerCard />
 
           {/* Audio element is managed by the useAudioPlayer hook in PlayerCard component */}
