@@ -4,7 +4,7 @@ import PlayerControls from "./PlayerControls";
 import LoadingOverlay from "./LoadingOverlay";
 import useAudioPlayer from "@/hooks/useAudioPlayer";
 
-const STREAM_URL = "https://katolikusradio.hu:8001/radetzkyfm";
+const STREAM_URL = "http://katolikusradio.hu:9000/radetzkyfm";
 
 const PlayerCard: React.FC = () => {
   const {
@@ -114,6 +114,14 @@ const PlayerCard: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Audio element (hidden) */}
+      <audio
+        ref={audioRef}
+        src={STREAM_URL}
+        preload="auto"
+        style={{ display: 'none' }}
+      />
 
       {/* Loading overlay */}
       {isLoading && <LoadingOverlay />}
