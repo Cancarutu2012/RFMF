@@ -5,8 +5,9 @@ import LoadingOverlay from "./LoadingOverlay";
 import useAudioPlayer from "@/hooks/useAudioPlayer";
 import axios from "axios";
 
-// Direct URL for use in Vercel deployment
-const STREAM_URL = "http://katolikusradio.hu:9000/radetzkyfm";
+// Use our proxy to avoid CORS issues
+// This works for both local development and Vercel deployment
+const STREAM_URL = "/api/proxy-stream?url=http://katolikusradio.hu:9000/radetzkyfm";
 
 // Interface for the stream metadata
 interface StreamMetadata {
