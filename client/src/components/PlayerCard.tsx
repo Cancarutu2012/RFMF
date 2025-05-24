@@ -55,7 +55,7 @@ const PlayerCard: React.FC = () => {
           <p className="text-white/80 text-sm">Live Stream</p>
 
           {/* Main visualization */}
-          <div className="mt-8 mb-6 relative h-48 flex items-center justify-center">
+          <div className="mt-6 sm:mt-8 mb-4 sm:mb-6 relative h-40 sm:h-48 flex items-center justify-center">
             <div
               id="visualization-container"
               className="relative w-full h-full flex items-center justify-center"
@@ -93,22 +93,22 @@ const PlayerCard: React.FC = () => {
         />
 
         {/* Station information */}
-        <div className="bg-[#0A0A0A] p-4 border-t border-white/5">
-          <div className="flex justify-between items-center">
-            <div>
+        <div className="bg-[#0A0A0A] p-3 sm:p-4 border-t border-white/5">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+            <div className="mb-2 sm:mb-0">
               <p className="text-white/80 text-xs">Stream URL:</p>
-              <p className="text-[#00E0FF] text-xs truncate max-w-[200px]">
-                {STREAM_URL}
+              <p className="text-[#00E0FF] text-xs truncate max-w-full sm:max-w-[200px]">
+                http://katolikusradio.hu:9000/radetzkyfm
               </p>
             </div>
-            <div className="flex space-x-3">
-              <button className="text-white/60 hover:text-white transition-colors">
+            <div className="flex justify-center sm:justify-end space-x-4 mt-1 sm:mt-0">
+              <button className="text-white/60 hover:text-white transition-colors p-2" aria-label="Favorite">
                 <i className="fas fa-heart text-lg"></i>
               </button>
-              <button className="text-white/60 hover:text-white transition-colors">
+              <button className="text-white/60 hover:text-white transition-colors p-2" aria-label="Share">
                 <i className="fas fa-share-alt text-lg"></i>
               </button>
-              <button className="text-white/60 hover:text-white transition-colors">
+              <button className="text-white/60 hover:text-white transition-colors p-2" aria-label="Information">
                 <i className="fas fa-info-circle text-lg"></i>
               </button>
             </div>
