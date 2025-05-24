@@ -46,7 +46,9 @@ const PlayerControls: React.FC<PlayerControlsProps> = ({
           onClick={onPlayPause}
           data-state={isPlaying ? "playing" : "paused"}
         >
-          <i className={`fas ${isPlaying ? 'fa-pause' : 'fa-play'} text-2xl ${isPlaying ? '' : 'ml-1'}`}></i>
+          <div className="flex items-center justify-center w-full h-full">
+            <i className={`fas ${isPlaying ? 'fa-pause' : 'fa-play'} text-2xl ${isPlaying ? '' : 'ml-1'}`}></i>
+          </div>
         </button>
         
         {/* Next button (disabled for stream) */}

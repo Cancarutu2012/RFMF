@@ -20,7 +20,7 @@ interface AudioPlayerState {
  * Custom hook to manage the audio player state and functionality
  */
 const useAudioPlayer = (streamUrl: string): AudioPlayerState => {
-  const audioRef = useRef<HTMLAudioElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(new Audio());
   const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
   const [audioSource, setAudioSource] = useState<MediaElementAudioSourceNode | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -34,15 +34,23 @@ const useAudioPlayer = (streamUrl: string): AudioPlayerState => {
     // Reset error state
     setError(null);
     
-    // Create audio context when audio element is available
+    // Create audio context
     if (audioRef.current && !audioContext) {
       try {
-        const context = new (window.AudioContext || (window as any).webkitAudioContext)();
-        setAudioContext(context);
-        
-        const source = context.createMediaElementSource(audioRef.current);
-        source.connect(context.destination);
-        setAudioSource(source);
+        const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+        if (AudioContextClass) {
+          const context = new AudioContextClass();
+          setAudioContext(context);
+          
+          const source = context.createMediaElementSource(audioRef.current);
+          source.connect(context.destination);
+          setAudioSource(source);
+          
+          console.log('Audio context and source initialized successfully');
+        } else {
+          console.error('AudioContext not supported in this browser');
+          setError('AudioContext not supported in your browser');
+        }
       } catch (err) {
         console.error('Error initializing audio context:', err);
         setError('Could not initialize audio context');
@@ -54,13 +62,16 @@ const useAudioPlayer = (streamUrl: string): AudioPlayerState => {
         audioContext.close();
       }
     };
-  }, [audioRef.current]);
+  }, []);
 
   // Set audio source URL
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.src = streamUrl;
+      audioRef.current.crossOrigin = "anonymous";
+      audioRef.current.preload = "auto";
       audioRef.current.load();
+      console.log('Audio source set to:', streamUrl);
     }
   }, [streamUrl]);
 

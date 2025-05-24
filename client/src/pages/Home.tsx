@@ -31,8 +31,7 @@ const Home: React.FC = () => {
         <main className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-10">
           <PlayerCard />
 
-          {/* Audio element (hidden) */}
-          <audio id="audio-player" preload="auto" style={{ display: 'none' }}></audio>
+          {/* Audio element is managed by the useAudioPlayer hook in PlayerCard component */}
         </main>
         
         {/* Footer */}
