@@ -4,7 +4,8 @@ import PlayerControls from "./PlayerControls";
 import LoadingOverlay from "./LoadingOverlay";
 import useAudioPlayer from "@/hooks/useAudioPlayer";
 
-const STREAM_URL = "http://katolikusradio.hu:9000/radetzkyfm";
+// Use our proxy to avoid CORS issues
+const STREAM_URL = "/api/proxy-stream?url=http://katolikusradio.hu:9000/radetzkyfm";
 
 const PlayerCard: React.FC = () => {
   const {
